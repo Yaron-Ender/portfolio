@@ -1,0 +1,21 @@
+  /*Font Familiy*/
+  @import url('https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Cinzel:wght@400;500&family=Indie+Flower&family=Patrick+Hand&family=Poppins:ital,wght@0,100;0,200;0,400;1,200;1,300;1,400;1,700&family=Raleway:ital,wght@0,100;0,300;1,100;1,400;1,500&family=Slabo+27px&display=swap');
+  
+  /* fonts */
+  $fs-200: clamp(0.78rem, calc(0.71rem + 0.35vw), 0.96rem);
+  $fs-300: clamp(0.94rem, calc(0.84rem + 0.51vw), 1.2rem);
+  $fs-320: clamp(0.96rem, calc(0.93rem + 0.61vw), 1.35rem);
+  $fs-400: clamp(1.13rem, calc(0.98rem + 0.73vw), 1.5rem);
+  $fs-500: clamp(1.94rem, calc(1.56rem + 1.92vw), 2.93rem);
+  $fs-600: clamp(2.8rem, calc(2.11rem + 3.47vw), 4.58rem);
+  $lh-1: 1;
+  $lh-1-1: 1.1;
+  $lh-1-4: 1.4;
+
+/* colors */
+$hue:223;
+$bkg: 190 60% 98%;
+$greyLight-1: hsl(215, 46%, 93%);
+$greyLight-2: hsl(225, 39%, 85%);
+
+$colors: ("cyan": hsl(183,90%,55%),"purple": hsl(273,90%,45%),"magenta": hsl(303,90%,55%),"pink": hsl(343,90%,75%))

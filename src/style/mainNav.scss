@@ -1,0 +1,172 @@
+.main-navbar{
+width:20rem;
+aspect-ratio:1;
+display: grid;
+place-items:center;
+ background: linear-gradient(
+90deg,
+#{hsl($hue, 10%, 45%)},
+#{hsl($hue, 10%, 65%)}
+  );
+transform:translateX(50%) rotateX(45deg) rotateZ(45deg);
+border-radius: 15%;
+box-shadow:.15em 0.15em 0  #{hsl($hue, 10%,75%)},
+0.45em 0.45em 0 #{hsl($hue, 30%,55%)},
+1em 1em 0  #{hsl($hue, 30%,45%)},
+1.2em 1.2em 0 #{hsl($hue, 20%,30%)},
+1.6em 1.6em 0.6em 0em #{hsl($hue, 20%,30%)},
+1.6em 1.6em 0em 3.2em #{hsl($hue, 10%,90%)}
+ ;
+ transform-style: preserve-3d;
+&__content{
+width:100%;
+aspect-ratio:1;
+transform-style: preserve-3d;
+position: relative;
+& >.tick-container{
+border:2px solid red;
+position: absolute;
+content: "";
+inset: 0;
+width:50%;
+height:50%;
+transform: translate(50%,50%);
+& > span{
+position: absolute;
+ font-size:$fs-400;
+ color:hsl($bkg);
+
+}
+& >span:nth-child(1){
+top:0;
+left:0;
+ transform:translate(0%,-5%) rotateZ(-45deg);
+}
+& >span:nth-child(2){
+  top:0%;
+  left:100%;
+  transform:translate(-100%,-35%) rotateZ(-45deg);
+}
+& >span:nth-child(3){
+  top:100%;
+  left:-50%;
+  transform:translate(50%,-220%) rotateZ(-45deg);
+}
+& >span:nth-child(4){
+  top:100%;
+  left:100%;
+  transform:translate(-100%,-35%) rotateZ(-45deg);
+
+}
+}
+& > div:not(.tick-container){
+width:4.5rem;
+aspect-ratio:0.8;
+border-radius:50%;
+position: relative;
+transform-style: preserve-3d;
+transition: all 0.15s linear;
+cursor: pointer;
+// animation:showBtn 3s backwards ease-in-out;
+& span{
+position: absolute;
+content: "";
+inset: 0;
+width:100%;
+border-radius: inherit;
+border: 2px solid red;
+display:flex;
+justify-content: center;
+align-items:center;
+&:before{
+position: absolute;
+content: "";
+inset: 0;
+width:100%;
+height:100%;
+z-index:-2;
+transition: box-shadow 0.15s linear;
+border-radius: inherit;
+}
+}
+}
+@each $key,$value in $colors{
+&--#{$key}{
+& span:first-child{
+background: linear-gradient(90deg,$value,lighten($value,15%)100%);
+  &:before{
+  background:linear-gradient(0deg,darken($value,10%),darken($value,30%),darken($value,20%));
+  box-shadow: 0.35em 0.35em 0.35em hsla(0,0%,0%,0.9),
+   0.5em 0.5em 0.5em fade-out($value,0.1);
+  }
+}
+&.transform{
+& span:first-child::before{
+ box-shadow: 0.0em 0.0em 0.0em hsla(0,0%,0%,0.9),
+   0.15em 0.15em 0.15em fade-out($value,0.4);
+}
+}
+}
+}
+& >div:nth-child(1){
+&.transform{
+transform: translate3d(5%,5%,0px);
+}
+& span:nth-child(1){
+  &:before{
+  transform: translate3d(7px,4px,0px);
+  }
+  }
+} 
+& >div:nth-child(2){
+top:0%;
+left:100%;
+transform: translate3d(-125%,-95%,0);
+&.transform{
+transform: translate3d(-115%,-95%,0);
+}
+& span:nth-child(1){
+  &:before{
+  transform: translate3d(7px,4px,0px);
+  }
+  }
+} 
+& >div:nth-child(3){
+top:50%;
+left:100%;
+transform: translate3d(-130%,-100%,0);
+&.transform{
+transform: translate3d(-115%,-90%,0);
+}
+& span:nth-child(1){
+  &:before{
+  transform: translate3d(7px,4px,0px);
+  }
+  }
+} 
+& >div:nth-child(4){
+top:0%;
+left:0%;
+transform: translate3d(7%,-20%,0);
+&.transform{
+transform: translate3d(25%,-10%,0);
+}
+& span:nth-child(1){
+  &:before{
+  transform: translate3d(7px,4px,0px);
+  }
+  }
+} 
+}
+}
+@keyframes showBtn {
+ 0%{
+ transform: translateZ(-100px);
+ }
+ 50%{
+  transform: translateZ(100px);
+ }
+ 100%{
+ transform: translateZ(0px);
+ }
+}
