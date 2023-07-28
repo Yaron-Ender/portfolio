@@ -8,7 +8,7 @@ useEffect(()=>{
 setViewboxWidth(window.innerWidth)
 },[setViewboxWidth])
     return (
-    <div className='home' style={{"--svg-aspect-ratio":'5'}}>
+    <div className='home'>
         <h1>home page</h1> 
         <main>
         <h1>main section - {viewboxWidth}</h1>

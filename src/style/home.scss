@@ -3,7 +3,7 @@ overflow-x: hidden;
 display: grid;
 grid-template-columns:1fr;
 grid-template-rows: 20% 1fr 1fr;
-place-items: center;
+// place-items: center;
 border:3px solid blue;
 & > footer{
 align-self: flex-end;
