@@ -3,39 +3,71 @@ const MainNav = () => {
 const initObj={
 app:false,
 contact:false,
-smallApp:false
+'small-Apps':false
 }
 const [clickObj,setClickObj]=useState(initObj);
-
+const handleClick = (e)=>{
+const content = e.target.dataset.action;
+setClickObj((prev)=>{
+ for(const property in prev){
+   if(property=== content){
+  continue;
+}
+ prev[property]=false;
+ }
+ return prev
+})
+setClickObj((prev)=>{
+  switch(content){
+case 'app':
+  prev={...prev,'app':!prev['app']}
+  return prev;
+  case 'contact':
+    prev = { ...prev,'contact': !prev["contact"] };
+  return prev;
+   case 'small-Apps':
+    prev = { ...prev,['small-Apps']: !prev["small-Apps"] };
+  return prev;
+  default:
+  return prev
+  }
+})
+}
 return (
-  <div className="main-navbar">
-    <div className="main-navbar__plate">
-<div
-className={`${clickObj["app"] ? "clicked" : ""} app`}
-onClick={()=>{
-setClickObj((prev)=>{
-prev={...prev,'app':!prev['app']}
-return prev
-})
-}}
->
-<span>App</span>
-</div>
-</div>
+<div className="main-navbar">
+{/* app */}
 <div className="main-navbar__plate">
-<div className={`${clickObj["contact"] ? "clicked" : ""} contact`}
-onClick={()=>{
-setClickObj((prev)=>{
-prev={...prev,'contact':!prev['contact']}
-return prev
-})
-}}
+<div 
+className={`${clickObj["app"] ? "clicked" : ""} square-shape app`}
+onClick={handleClick}
 >
-        <span>Contant</span>
-      </div>
-    </div>
-    <div className="main-navbar__plate "></div>
-  </div>
+<span className="span-background">
+<p data-action='app' >Apps</p>
+</span>
+</div>
+</div>
+{/* contact */}
+<div className="main-navbar__plate">
+<div className={`${clickObj["contact"] ? "clicked" : ""} circle-shape contact`}
+onClick={handleClick}
+>
+<span className="span-background">
+<p data-action='contact'>Contact</p>
+</span>   
+</div>
+</div>
+{/* small apps */}
+<div className="main-navbar__plate">
+<div className={`${clickObj["small-Apps"] ? "clicked" : ""} small-apps-shape small-apps`}
+onClick={handleClick}
+>
+<span className="span-background">
+<p data-action='small-Apps'>Small Apps</p>
+</span>   
+</div>
+</div>
+
+</div>
 );
 };
 
