@@ -1,0 +1,168 @@
+.showApps{
+width:100%;
+min-height:100vh;
+display: grid;
+grid-template-columns:1fr;
+place-items:center;
+background-color: #444;
+& > header{
+display:flex;
+justify-content:flex-end;
+align-items: center;
+
+width:100%;
+& h1{
+margin-inline:auto;
+color: #eee;
+font-family: 'Poppins' serif;
+letter-spacing: 0.2rem;
+}
+& > button{
+margin-right:1rem;
+  padding: 0.4em 1.4em;
+  border-radius:3%;
+  font:$fs-200/1.5 'Poppins';
+  cursor: pointer;
+  border:0;
+&:hover{
+  transition: all 0.3s;
+box-shadow: 0 0 0 0.3rem #444,
+            0 0 0 0.6em #fff;
+}
+}
+}
+&__container{
+max-width:940px;
+width:100%;
+display: grid;
+grid-template-columns:1fr;
+place-items:center;
+padding:2rem;
+gap:2rem;
+&-project{
+width: 100%;
+aspect-ratio:3;
+position: relative;
+cursor: pointer;
+ overflow:hidden;
+&:hover .content{
+background-color: #222;
+opacity: 1;
+& > p{
+transform: scale(1);
+}
+ }
+&:hover .background{
+transform: scale(1.2);
+opacity: 0;
+}
+& >.content{
+position:absolute;
+padding:2rem 2rem 0.2rem 2rem;
+ width:100%;
+ height:100%;
+z-index: 6;
+display:flex;
+flex-flow:column wrap;
+align-items:center;
+justify-content: space-between;
+color:#fff;
+opacity: 0;
+transition: all 6s 0.1s cubic-bezier(0.5, 0.45, 0.45, 0.95);
+& >p{
+transform:scale(0.9);
+transition:inherit;
+}
+& > .action-box{
+margin-inline-start:auto ;
+max-width: 40%;
+padding:0.2rem;
+display:flex;
+justify-content:flex-end;
+align-items:center;
+& > a.btn{
+text-decoration:none;
+display:inline-block;
+position: relative;
+color:#222;
+padding:2.5px 22px;
+border-radius:7px;
+background:hsl(0, 0%, 100%);
+transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+font-size:1.7rem;
+&:hover{
+  transition: all 0.3s;
+  box-shadow: 0 0 0 0.2rem #444,
+              0 0 0 0.25em #fff;
+}
+}
+& >a.social-icon{
+display: inline-block;
+background-color: #fff;
+width:45px;
+height:45px;
+border-radius: 50%;
+margin-right:1.2rem;
+overflow: hidden;
+& img{
+    width:100%;
+    height:100%;
+transform: scale(1.55);
+}
+}
+}
+}
+& > .background{  
+position: absolute;
+width:100%;
+height:100%;
+inset:0;
+border-radius:2%;
+transition:all 6s;
+z-index:3;
+&:after{
+position: absolute;
+inset:0;
+content:"";
+width:98.5%;
+height:97%;
+transform:translate(0.9%,1.2%);
+box-shadow:inset 1px 1px 2px rgba(0, 0, 0, 0.8),
+inset -1px -1px 2px rgba(0, 0, 0, 0.8) ;
+border-radius:inherit;
+}
+&:before{
+position: absolute;
+inset:0;
+content: "";
+width:100%;
+height:105%;
+transform:translate(0.3%,-2.5%);
+border-radius:inherit;
+border:2px solid rgba(0, 0, 0, 0.2);
+ background-image: linear-gradient(
+    148deg,
+    rgba(246, 248, 249, 0) 0%,
+    rgba(245, 247, 249, 0) 100%
+    ),
+    radial-gradient(
+    rgba(246, 248, 249, 1) 0%,
+    rgba(205, 212, 217, 1) 70%,
+    rgba(205, 212, 217, 1) 71%,
+    rgba(245, 247, 249, 1) 100%
+);
+}
+}
+&-one > .background{
+&:after{
+background:center / 85% 100% no-repeat url(../assets/market-api.png),#eee 35%;
+}
+}
+&-two > .background{
+&:after{
+background:center / 85% 100% no-repeat url(../assets/lab-managment-demo.png),#eee 35%;
+}
+}
+}
+}
+}

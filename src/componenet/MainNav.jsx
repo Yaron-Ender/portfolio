@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { redirect,useNavigate} from "react-router-dom";
 const MainNav = () => {
+const navigate = useNavigate()
 const initObj={
 app:false,
 contact:false,
@@ -9,28 +11,34 @@ const [clickObj,setClickObj]=useState(initObj);
 const handleClick = (e)=>{
 const content = e.target.dataset.action;
 setClickObj((prev)=>{
- for(const property in prev){
-   if(property=== content){
-  continue;
+for(const property in prev){
+if(property=== content){
+continue;
 }
- prev[property]=false;
- }
- return prev
+prev[property]=false;
+}
+return prev
 })
 setClickObj((prev)=>{
-  switch(content){
+switch(content){
 case 'app':
-  prev={...prev,'app':!prev['app']}
-  return prev;
-  case 'contact':
-    prev = { ...prev,'contact': !prev["contact"] };
-  return prev;
-   case 'small-Apps':
-    prev = { ...prev,['small-Apps']: !prev["small-Apps"] };
-  return prev;
-  default:
-  return prev
-  }
+prev={...prev,'app':!prev['app']}
+window.setTimeout(()=>{
+navigate("/showApps");
+},1000)
+return prev;
+case 'contact':
+prev = { ...prev,'contact': !prev["contact"] };
+return prev;
+case 'small-Apps':
+prev = { ...prev,['small-Apps']: !prev["small-Apps"] };
+window.setTimeout(()=>{
+navigate("/smallApps");
+},1000)
+return prev;
+default:
+return prev
+}
 })
 }
 return (
