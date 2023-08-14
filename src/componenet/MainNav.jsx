@@ -1,6 +1,9 @@
-import { useState } from "react";
-import { redirect,useNavigate} from "react-router-dom";
+import { useState,useEffect,useContext } from "react";
+import { useNavigate} from "react-router-dom";
+import { ContactContext } from '../context/ContactContext'
 const MainNav = () => {
+const { contact, updateContact } = useContext(ContactContext);
+// console.log(contact)
 const navigate = useNavigate()
 const initObj={
 app:false,
@@ -8,6 +11,11 @@ contact:false,
 'small-Apps':false
 }
 const [clickObj,setClickObj]=useState(initObj);
+//control the opening contact pannel
+useEffect(()=>{
+updateContact(clickObj['contact'])
+},[clickObj])
+//handleClilck function
 const handleClick = (e)=>{
 const content = e.target.dataset.action;
 setClickObj((prev)=>{
@@ -78,23 +86,4 @@ onClick={handleClick}
 </div>
 );
 };
-
 export default MainNav;
-
-{/* <div className="main-navbar__content--cyan" onClick={handleClick}>
-  <span>
-    <svg attr="cyan">
-      <g transform="rotate(-48 49 85)">
-        <text
-          x="25%"
-          y="50%"
-          textLength="60"
-          lengthAdjust="spacingAndGlyphs"
-          attr="cyan"
-        >
-          Apps
-        </text>
-      </g>
-    </svg>
-  </span>
-</div>; */}

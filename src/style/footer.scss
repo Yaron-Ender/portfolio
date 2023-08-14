@@ -1,0 +1,9 @@
+@use "sass:map";
+
+footer svg{
+@for $i from 1 through 5{
+& path:nth-child(#{$i}){
+ fill: map.get($colors,'ocean-'+#{$i+1});
+}
+} 
+}

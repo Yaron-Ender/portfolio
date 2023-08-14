@@ -1,0 +1,439 @@
+@use "sass:map";
+.section-contact{
+width:100%;
+height:0px;
+transition: all 2s 2s ease-in-out;
+//style for checks icon 
+& .check-icon{
+color:green;
+}
+& .section-contact__animation-pannel{
+width:95%;
+height:100%;
+display:grid;
+grid-template-columns:1fr 1fr;
+margin-inline:auto;
+position: relative;
+//general ul style
+&  ul{
+transform-style: preserve-3d;
+list-style-type:none;
+& > li{
+font:bold 1.4rem/1.5 'Poppins',serif;
+letter-spacing: 0.08rem;
+}
+}
+&__dropdwon-list{
+height: 100%;
+list-style:none;
+display:flex;
+justify-content: center;
+align-items: center;
+perspective:1000px;
+transform-style: preserve-3d;
+& > ul.char-list{
+align-self: flex-start;
+width: 250px;
+box-shadow: 0 0 0 .2rem $greyLight-1,
+-10rem 0 200px -1.5rem map-get($colors,'sun-2')
+;
+& > li{
+height:60px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding:0 3rem;
+ background: linear-gradient(
+90deg,
+ #{darken(hsl($hue, 50%, 45%),0%)},
+ #{hsl($hue, 10%, 85%)}
+  );
+border-top:2px solid $greyLight-1;
+text-align: center;
+transform-origin: top;
+transform-style: preserve-3d;
+&:hover{
+ background: linear-gradient(
+90deg,
+ #{lighten(hsl($hue, 50%, 45%),20%)},
+ #{hsl($hue, 10%, 92%)}
+  );
+}
+}
+}
+& > .dropdwon-plane{
+position: absolute;
+top:0;
+left:20%;
+width:250px;
+height:250px;
+border-radius: 20%;
+transform: rotateY(-20deg) rotateX(25deg) translateX(20px) translateZ(-20px);
+ background:5%/10% repeat linear-gradient(90deg,map.get($colors,'ocean-1'),map.get($colors,'ocean-4'));
+ border:2px solid black;
+ box-shadow:15px 5px 0rem -0.5rem hsl($hue, 10%, 40%),
+ 25px 0px 10rem -1.5rem hsl($hue, 10%, 60%)
+ ;
+& .dropdwon-plane-inner{
+position:absolute;
+background-color:#fff;
+width:20%;
+height:20%;
+top:50%;
+left:50%;
+border-radius:50%;
+transform: translate(-50%,-50%);
+outline:20px double #fff;
+filter: blur(25px);
+}
+}
+}
+//CONTACT BOARD
+&__contact-board{
+//function that control appearance of copy-message
+$reveal-copy-message:none;
+@function function-copy-message(){
+ $reveal-copy-message:block;
+ @return  $reveal-copy-message
+};
+display:flex;
+align-items: center;
+ max-width: 400px;
+perspective:1000px;
+& > ul.contact-info{
+min-width:320px;
+border-radius:10%;
+background: linear-gradient(
+90deg,
+#{hsl($hue, 10%, 65%)},
+#{hsl($hue, 10%, 80%)}
+);
+box-shadow: 0.15em 0.15em 0 hsl($hue, 10%, 85%),
+0.25em 0.25em 0 hsl($hue, 30%, 55%),
+0.5em 0.5em 0 hsl($hue, 30%, 45%),
+0.8em 0.8em 0 hsl($hue, 20%, 30%),
+1.2em 1.2em 0.6em 0em hsl($hue,10%, 30%),
+3em 3em 11em -1.5em hsla(212, 100%, 12%, 0.9)
+;
+transform: rotateY(-10deg);
+& > li{
+display: flex;
+justify-content: center;
+align-items: center;
+padding:1rem 0;
+border-top: 2px solid map-get($colors,'ocean-4');
+}
+& > li:first-child{
+position: relative;
+width:100%;
+& > span.copy-message{
+position: absolute;
+top:-50%;
+right:0%;
+display:$reveal-copy-message;
+transition:all 2s linear;
+padding:0.5rem;
+border-radius:20%;
+font-size:1rem;
+&:before{
+position:absolute;
+width:100%;
+height:100%;
+inset:0;
+text-align: center;
+content:'Copy';
+padding: 0.5rem;
+border-radius: inherit;
+z-index: 3;
+color: #fff;
+background-color:#222;
+}
+}
+& > input{
+width:100%;
+margin-inline:auto ;
+font:1.4rem/2 'Poppins',serif;
+padding: 0 0rem;
+outline:none;
+border:1px solid red;
+background-color: transparent;
+}
+& > button.clipboard-btn {
+margin-left: auto;
+background-color: transparent;
+cursor: pointer;
+border:0;
+&:hover ~ span.copy-message{
+display:function-copy-message();
+}
+&:active ~ span.copy-message:before{
+content:'Copied!';
+letter-spacing: 0.1rem;
+}
+}
+//style for clipbaord icon
+& button.clipboard-btn .clipboard-icon{
+fill:transparent;
+stroke-width: 2px;
+stroke: black;
+transition:all 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+&:hover{
+background:$greyLight-2;
+}
+&:active{
+transform: translateY(2px);
+}
+}
+}
+& li.social-icons{
+position: relative;
+z-index:2;
+& > a{
+margin:0 2rem;
+background-color: #fff;
+border-radius:50%;
+&  > img{
+width:70px;
+transition:all .5s ease-in-out;
+&:hover{
+transform:scale(1.1);
+box-shadow:0.5rem 0.5rem 1rem rgba(0,0,0,0.3);
+}
+}
+}
+& > button.nose{
+position: absolute;
+width:35px;
+height:70px;
+background-color: #222;
+left:50%;
+bottom:-50%;
+border-radius:30px 30px 30px 30px / 90px 90px 30px 30px;
+border-bottom: 10px solid rgba(0,0,0,0.8);
+transform: translateX(-50%);
+transition: all 0.1s ease-in-out;
+content:"";
+cursor: pointer;
+ transform-origin:top left;
+z-index:9;
+background: linear-gradient(map.get($colors,'cyan'),lighten(map.get($colors,'cyan'),19%));
+box-shadow:
+inset -0.1rem -0.1rem 0.5rem 0.05rem rgba(0,0,0,0.8);
+animation: nose-animation 0.2s 3s 10 alternate-reverse ease-in-out ;
+&:hover{
+background: linear-gradient(map.get($colors,'cyan'),darken(map.get($colors,'cyan'),9%));
+}
+&:active{
+border-radius:50% 50% 50% 50% / 50% 50% 50% 50% ;
+box-shadow:
+inset -0.1rem -0.1rem 0rem 0rem rgba(0,0,0,0.5);
+}
+@keyframes nose-animation {
+0%{
+transform:rotateZ(20deg);
+}
+// 50%{
+//   transform:rotateZ(-20deg);
+  
+// }
+100%{
+  transform:rotateZ(-20deg);
+}
+}
+}
+&:has(~ li.open-text-box){
+  & a.linkedin-btn{
+  // transition:all .5s 2s ease-in-out;
+  // transform: rotatez(40deg) scaleY(0.1) scaleX(0.5);
+animation: blink 4s ease-in-out 2s ;
+}
+@keyframes blink {
+  0%{
+  transform: rotatez(0deg) scaleY(1) scaleX(1); 
+  }
+50%{
+  transform: rotatez(40deg) scaleY(0.1) scaleX(0.5); 
+}
+70%{
+  transform: rotatez(40deg) scaleY(0.1) scaleX(0.5); 
+}
+100%{
+  transform: rotatez(0deg) scaleY(1) scaleX(1); 
+}
+}
+}
+}//end of socials icons
+// SMILE TEXT ANIMATION 
+& li.thanks{
+height:0px;
+transition: all 2s ease-in-out;
+transform-origin:top left;
+& svg  path,svg text textPath{
+animation: smile-shape-reverse 3s forwards;
+}
+&.open-text-box{
+height:180px;
+transition: all 2s ease-in-out;
+transform-origin:top left;
+& svg  path,svg text textPath{
+animation: smile-shape 2s 1s forwards ;
+}
+}
+& svg {
+// border: 2px solid red;
+width:100%;
+height:100%;
+// border-bottom-left-radius: 50%;
+// border-bottom-right-radius: 50%;
+// box-shadow: inset 1rem 1rem 5rem hotpink,
+//  inset -1rem -1rem 5rem hotpink,
+//  0rem 1rem 1rem rgba(0,0,0,0.5) 
+//  ;
+// background:linear-gradient(#fff,blue);
+& text{
+font-size:28px;
+text-anchor:middle;
+}
+}
+@keyframes smile-shape {
+100%{
+font-size: 40px;
+ d:path("M 10 40 Q 160 150 300 40")
+}
+}
+@keyframes smile-shape-reverse {
+0%{
+font-size: 40px;
+ d:path("M 10 40 Q 160 150 300 40")
+}
+100%{
+  font-size:28px;
+  d:path("M 10 40 Q 160 40 300 40")
+
+}
+}
+}
+}
+}
+}
+//OPEN STATE
+&.open-contact-pannel{
+height:300px;
+ transition: all 2s ease-in-out;
+& > .section-contact__animation-pannel{ 
+& > .section-contact__animation-pannel__dropdwon-list{
+position: relative;
+& > ul.char-list{
+transition: all 5s linear;
+animation:rotateDropList 3s ease-in-out forwards;
+& > li{
+animation:  wave-list 1s 1s 2 ease-in-out forwards;
+&:nth-child(2){
+transform-origin:center;
+}
+}
+}
+& > .dropdwon-plane{
+animation: dropdwon-plane 4s ease-in-out forwards;
+ & > .dropdwon-plane-inner{
+animation: outline .3s infinite forwards;
+ }
+}
+}
+}
+}//end animation pannel
+
+}
+//target the UL when the pannel is startin gto close
+.section-contact:not(.open-contact-pannel)  ul{
+animation:rotateDropList-reverse 3s ease-in-out forwards;
+}
+//target the dropdwonPlane when the pannel is startin gto close
+.section-contact:not(.open-contact-pannel) .section-contact__animation-pannel__dropdwon-list .dropdwon-plane{
+ animation: dropdwon-plane-reverse 4s ease-in-out forwards;
+}
+
+//KEYFRAMES
+//list animation
+@keyframes rotateDropList{
+0%{
+transform:rotateX(0deg)rotateY(32deg) translate3d(200px,0px,0px) scale(0.8);
+opacity: 0;
+}
+60%{
+opacity: 1;
+}
+100%{
+transform: rotateX(16deg)rotateY(32deg)translate3d(-100px,0px,0px) scale(1);
+}
+}
+//list animation-reverse
+@keyframes rotateDropList-reverse{
+0%{
+transform: rotateX(16deg)rotateY(32deg)translate3d(-100px,0px,0px) scale(1);
+}
+40%{
+opacity: 1;
+}
+100%{
+transform:rotateX(0deg)rotateY(32deg) translate3d(200px,0px,0px) scale(0.8);
+opacity: 0;
+}
+}
+// blue offset  out line animation 
+@keyframes outline {
+0%{
+outline-offset: 0;
+}
+100%{
+outline-offset:80px;
+
+}
+}
+//dropdwon plane animation
+@keyframes dropdwon-plane {
+0%{
+transform: rotateY(-20deg) rotateX(25deg) translateX(20px) translateZ(-20px) scale(1);
+}
+20%{
+transform: rotateY(-20deg) rotateX(25deg) translateX(20px) translateZ(-20px) scale(1.2);
+}
+100%{
+transform: rotateY(-20deg) rotateX(25deg) translateX(40px) translateZ(-120px) scale(0.8);
+}
+}
+//dropdwon plane animation reverse
+@keyframes dropdwon-plane-reverse {
+0%{
+transform: rotateY(-20deg) rotateX(25deg) translateX(40px) translateZ(-120px) scale(0.8);
+}
+20%{
+transform: rotateY(-20deg) rotateX(25deg) translateX(20px) translateZ(-20px) scale(1.2);
+}
+100%{
+transform: rotateY(-20deg) rotateX(25deg) translateX(20px) translateZ(-20px) scale(1);
+}
+}
+@keyframes wave-list{
+0%{
+transform:rotateX(0deg);
+}
+50%{
+ transform:rotateX(-30deg);
+}
+100%{
+transform:rotateX(0deg);
+}
+}
+//clipboard animation
+@keyframes clipboard{
+0%{
+
+}
+50%{
+
+}
+100%{
+
+}
+}

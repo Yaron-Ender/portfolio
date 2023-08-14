@@ -1,10 +1,66 @@
+@use "sass:map";
 .home{
-overflow-x: hidden;
-display: grid;
-grid-template-columns:1fr;
-grid-template-rows: 20% 1fr 1fr;
-// place-items: center;
-border:3px solid blue;
+  position: relative;
+  width:100%;
+  height:100vh;
+  display: grid;
+  grid-template-columns:1fr;
+  grid-template-rows:1fr 1fr 1fr;
+  place-items: center;
+  overflow-x: hidden;
+
+animation: sunrise 10s 1s linear forwards;
+ @keyframes sunrise {
+@for $i from 0 through 100{
+@if $i <58 {
+  #{$i * 1%} {
+  background:no-repeat radial-gradient(circle 200px at ((20 + $i)/1.2)*1% (100- $i) * 1%,map.get($colors,'sun-1'),hsla(209, 58%, 24 +$i *1%,1 - $i/100)),
+   linear-gradient(map.get($colors,'ocean-3'),map.get($colors,'ocean-0'))
+  ;
+  }
+}@else{
+   #{$i * 1%} {
+  background:no-repeat radial-gradient(circle 200px at (78 / 1.2)*1% (100- $i) * 1%,map.get($colors,'sun-1'),hsla(209, 58%, 82,1 - $i/100)),
+   linear-gradient(map.get($colors,'ocean-3'),map.get($colors,'ocean-0'))
+  ;
+  } 
+}
+}
+}
+& > header{
+position: relative;
+font-family:Poppins,serif;
+margin-inline: auto;
+width:min(100%,60rem);
+padding: 1rem;
+z-index:2;
+transform:translateY(-200px);
+animation:headerAnimation 2s ease-in 7s forwards;
+border-bottom-left-radius:10px;
+border-bottom-right-radius:10px;
+overflow: hidden;
+&:after{
+position: absolute;
+inset:0;
+width:100%;
+height:100%;
+content:"";
+border-radius:inherit;
+opacity:0.5;
+background: radial-gradient(ellipse 50% 10px at 50%,map.get($colors,'yellow-shine')60%,map.get($colors,'ocean-0'));
+z-index:-1;
+ filter: blur(0px);
+}
+& > h1,h2{
+width: 100%;
+text-align: center;
+letter-spacing:0.1rem;
+}
+}
+& > main{
+width: 100%;
+margin-inline:auto;
+}
 & > footer{
 align-self: flex-end;
 position: relative;   
@@ -17,7 +73,7 @@ left:30%;
 width:5%;
 z-index:1;
 offset-path: path("M 59 3 Q 132 -43 213 -1 Q 284 20 360 -12 T 510 -5");
-//animation: silingBoat 30s infinite alternate  ease-in-out;
+// animation: silingBoat 30s infinite alternate  ease-in-out;
 & > span{
 position: absolute;
 width:200%;
@@ -46,7 +102,7 @@ content:"";
  box-shadow:0.2rem 0.2rem  0.6rem $greyLight-2,
  -.2rem -.2rem .5rem $greyLight-1;
  ;
-//animation: shadowAnimation 6s infinite 2s linear;
+// animation: shadowAnimation 6s infinite 2s linear;
 }
 &:before{
   position: absolute;
@@ -61,19 +117,19 @@ content:"";
 box-shadow:0.2rem 0.2rem 0.6rem $greyLight-2,
 -.2rem -.2rem .5rem $greyLight-1;
 ;
-//animation: shadowAnimation 8s infinite  linear;
+// animation: shadowAnimation 8s infinite  linear;
 }
 }
 & > svg{
 position: absolute;
 top:0;
 left:0;
- border:10px solid green;
-@for $i from 1 through 3{
+//  border:10px solid green;
+// @for $i from 1 through 3{
 //  & path:nth-child(#{$i}){
 //   animation: path-top-#{$i} 3s linear infinite alternate-reverse;
 //  }
-}
+// }
 }
 }
 }
@@ -148,5 +204,11 @@ d:path(
 d:path(
 "M0 396L59.5 396.8C119 397.7 238 399.3 357 400.3C476 401.3 595 401.7 714 397.3C833 393 952 384 1071.2 381.8C1190.3 379.7 1309.7 384.3 1428.8 390.2C1548 396 1667 403 1786 407.3C1905 411.7 2024 413.3 2143 414C2262 414.7 2381 414.3 2440.5 414.2L2500 414L2500 501L2440.5 501C2381 501 2262 501 2143 501C2024 501 1905 501 1786 501C1667 501 1548 501 1428.8 501C1309.7 501 1190.3 501 1071.2 501C952 501 833 501 714 501C595 501 476 501 357 501C238 501 119 501 59.5 501L0 501Z"
 )
+}
+}
+//header animation
+@keyframes headerAnimation {
+100%{
+transform:translateY(0);
 }
 }

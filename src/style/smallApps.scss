@@ -146,14 +146,6 @@ transition: all 1s ease;
 &.project-six::after{
    background:center / cover no-repeat url(../assets/exchange-calculator.png);
 }
-// &:hover{
-//   cursor: pointer;
-// }
-&:hover::after{
-  // opacity:0.2;
-  // transform:scale(1.2);
-  // transition: transform 1.5s linear,opacity 1.5s 1s ease;
-}
  }//end of carusel-card
 }//end of carusel-container
 }//end of carusel-container-prespective

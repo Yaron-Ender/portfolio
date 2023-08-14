@@ -14,8 +14,15 @@
 
 /* colors */
 $hue:223;
-$bkg: 190 60% 98%;
+$bkg: 190 80% 98%;
 $greyLight-1: hsl(215, 46%, 93%);
 $greyLight-2: hsl(225, 39%, 85%);
 
-$colors: ("cyan": hsl(183,90%,55%),"purple": hsl(273,90%,45%),"magenta": hsl(303,90%,55%),"pink": hsl(343,90%,75%))
+$colors: ("cyan": hsl(183,90%,55%),"purple": hsl(273,90%,45%),"magenta": hsl(303,90%,55%),"pink": hsl(343,90%,75%),
+"ocean-8":hsl(209, 58%, 14%),'ocean-7':hsl(209, 57%, 24%),
+"ocean-6":hsl(208, 57%, 35%),"ocean-5":hsl(208, 57%, 45%),
+"ocean-4":hsl(209, 56%, 54%),"ocean-3":hsl(209, 57%, 64%),
+"ocean-2":hsl(208, 56%, 73%),"ocean-1":hsl(209, 57%, 93%),"ocean-0":hsl(207, 52%, 96%),"white-1":hsl(206, 54%, 97%),
+"sun-1":hsl(50, 95%, 85%),'sun-2':hsl(50, 95%, 65%),'sun-3':hsl(36, 100%, 54%),
+'yellow-shine':hsl(64, 100%, 50%)
+)

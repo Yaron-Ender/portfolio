@@ -1,11 +1,13 @@
 .main-navbar{
-width:80%;
- margin-inline:auto ;
+width:min(100%,60rem);
+margin-inline:auto ;
+padding:0 3rem;
 display: flex;
 justify-content:space-between;
 background: #{hsl($hue, 10%,90%)};
 box-shadow: 0 0 0 3rem #{hsl($hue, 10%,90%)};
 border-radius:2%;
+border: 2px solid green;
 &__plate{
  width:10rem;
  aspect-ratio:1;
@@ -107,123 +109,8 @@ transform: rotate(-45deg);
 font:$fs-400/1.5 'Poppins';
 }
 }
-// transform:translateX(25%) rotateX(45deg) rotateZ(45deg);
-// border-top-left-radius: 50%;
-
-
-// &__content{
-// width:100%;
-// aspect-ratio:1;
-// transform-style: preserve-3d;
-// position: relative;
-// & > div{
-// width:6rem;
-// aspect-ratio:0.8;
-// border-radius:50%;
-// position: relative;
-// transform-style: preserve-3d;
-// transition: all 0.15s linear;
-// cursor: pointer;
-// // animation:showBtn 3s backwards ease-in-out;
-// display: none;
-// & span{
-// position: absolute;
-// content: "";
-// inset: 0;
-// width:100%;
-// border-radius: inherit;
-// display:flex;
-// justify-content: center;
-// align-items:center;
-// &:before{
-// position: absolute;
-// content: "";
-// inset: 0;
-// width:100%;
-// height:100%;
-// z-index:-2;
-// transition: box-shadow 0.15s linear;
-// border-radius: inherit;
-// }
-// & svg text{
-//  fill:transparent;
-//  stroke:black;
-//  stroke-width:2;
-// }
-// }
-// }
-
-// @each $key,$value in $colors{
-// &--#{$key}{
-// & span:first-child{
-// background: linear-gradient(90deg,$value,lighten($value,15%)100%);
-//   &:before{
-//   background:linear-gradient(0deg,darken($value,10%),darken($value,30%),darken($value,20%));
-//   box-shadow: 0.35em 0.35em 0.35em hsla(0,0%,0%,0.9),
-//    0.5em 0.5em 0.5em fade-out($value,0.1);
-//   }
-// }
-// &.transform{
-// & span:first-child::before{
-//  box-shadow: 0.0em 0.0em 0.0em hsla(0,0%,0%,0.9),
-//    0.15em 0.15em 0.15em fade-out($value,0.4);
-// }
-// }
-// }
-// }
-// & >div:nth-child(1){
-// &.transform{
-// transform: translate3d(5%,5%,0px);
-// }
-// & span:nth-child(1){
-//   &:before{
-//   transform: translate3d(7px,4px,0px);
-//   }
-//   }
-// } 
-// & >div:nth-child(2){
-// top:0%;
-// left:100%;
-// transform: translate3d(-125%,-95%,0);
-// &.transform{
-// transform: translate3d(-115%,-95%,0);
-// }
-// & span:nth-child(1){
-//   &:before{
-//   transform: translate3d(7px,4px,0px);
-//   }
-//   }
-// } 
-// & >div:nth-child(3){
-// top:50%;
-// left:100%;
-// transform: translate3d(-130%,-100%,0);
-// &.transform{
-// transform: translate3d(-115%,-90%,0);
-// }
-// & span:nth-child(1){
-//   &:before{
-//   transform: translate3d(7px,4px,0px);
-//   }
-//   }
-// } 
-// & >div:nth-child(4){
-// top:0%;
-// left:0%;
-// transform: translate3d(7%,-20%,0);
-// &.transform{
-// transform: translate3d(25%,-10%,0);
-// }
-// & span:nth-child(1){
-//   &:before{
-//   transform: translate3d(7px,4px,0px);
-//   }
-//   }
-// } 
-// }
-
-
 }
+
 @keyframes showBtn {
  0%{
  transform: translateZ(-100px);
