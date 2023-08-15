@@ -8,6 +8,7 @@ const Contact = () => {
 const animationPannel = useRef();
 const animationPannelListUl = useRef();
 const animationPannelListplane = useRef();
+const dropdwonList = useRef();
 const inputElement = useRef();
 const {contact}=useContext(ContactContext);
 const [openTextPannel,setOpenTextPannel]=useState(false);
@@ -19,11 +20,21 @@ setScreenSize(window.innerWidth)
 console.log(screenSize)
 if(contact){
 animationPannel.current.style.setProperty("display", "grid");
+if(screenSize<775){
+//if screen small ommite dropdown pannel
+dropdwonList.current.style.setProperty("display", "none");
+animationPannel.current.style.setProperty("grid-template-columns", "1fr");
+animationPannel.current.style.setProperty("place-items", "center");
+}else{
+//for bigger screen than 775 - if user resize the browser window from widow less 775 to screen size bigger than 775 the elemeents that have been omitted should be replace back
+dropdwonList.current.style.setProperty("display", "grid");
+animationPannel.current.style.setProperty("grid-template-columns", "1fr 1fr");
+animationPannel.current.style.setProperty("place-items", "center");
 //stop the "fan" when the UL animation end
 animationPannelListUl.current.getAnimations()[0].finished.then(()=>{
 animationPannelListplane.current.getAnimations()[0].effect.target.children[0].getAnimations()[0].cancel()
 })
-
+}
 }else{
 //the svg THANKS text
 setOpenTextPannel(false)
@@ -38,10 +49,11 @@ animationPannelListplane.current.getAnimations()[0].finished.then(() => {
 return (
 <div className={`${contact ? "open-contact-pannel" : ""} section-contact`}>
 <div className="section-contact__animation-pannel"
-style={(screenSize<775)?{'--screen':true,display:'none'}:{background:'green',display:'none'}}
+style={{display:'none'}}
 ref={animationPannel}
 >
 <div className="section-contact__animation-pannel__dropdwon-list"
+ref={dropdwonList}
 >
 <ul className="char-list"
 ref={animationPannelListUl}

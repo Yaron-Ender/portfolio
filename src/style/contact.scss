@@ -8,22 +8,12 @@
     color:green;
   }
   & .section-contact__animation-pannel{
-//if screen will be 775px or less the
-$sc:var(--screen);
 width:95%;
 height:100%;
 display:grid;
 grid-template-columns:1fr 1fr;
 margin-inline:auto;
 position: relative;
-@if $sc{
-grid-template-columns:0px 1fr;
-grid-template-rows:1fr 1fr;
-place-items:center;
-&>.section-contact__animation-pannel__dropdwon-list{
-visibility:hidden;
-}
-}
 //general ul style
 &  ul{
 transform-style: preserve-3d;
