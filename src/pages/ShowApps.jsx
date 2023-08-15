@@ -1,12 +1,11 @@
 import github from '../assets/github.png'
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
 const ShowApps = () => {
 const [smallScreen,setSmallScreen]=useState(false)
 const navigate = useNavigate();
 useEffect(()=>{
-  console.log(window.innerWidth)  
   if(window.innerWidth<580){
 setSmallScreen(true)
   }
@@ -15,7 +14,10 @@ setSmallScreen(true)
       <div className="showApps">
 <header>
 <h1> APPs</h1>
-<button className='btn btn-black' onClick={()=>{navigate('/')}}>Go back to home page <ArrowUturnLeftIcon width={20} /></button>
+<button className='btn btn-black' onClick={()=>{
+navigate('/')
+}}
+>Go back to home page <ArrowUturnLeftIcon width={20} /></button>
 </header>
 <div className="showApps__container">
 <div className="showApps__container-project showApps__container-project-one">

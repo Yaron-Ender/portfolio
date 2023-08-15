@@ -1,19 +1,29 @@
 @use "sass:map";
 .section-contact{
-width:100%;
-height:0px;
-transition: all 2s 2s ease-in-out;
-//style for checks icon 
-& .check-icon{
-color:green;
-}
-& .section-contact__animation-pannel{
+  width:100%;
+  height:0px;
+  transition: all 2s 2s ease-in-out;
+  //style for checks icon 
+  & .check-icon{
+    color:green;
+  }
+  & .section-contact__animation-pannel{
+//if screen will be 775px or less the
+$sc:var(--screen);
 width:95%;
 height:100%;
 display:grid;
 grid-template-columns:1fr 1fr;
 margin-inline:auto;
 position: relative;
+@if $sc{
+grid-template-columns:0px 1fr;
+grid-template-rows:1fr 1fr;
+place-items:center;
+&>.section-contact__animation-pannel__dropdwon-list{
+visibility:hidden;
+}
+}
 //general ul style
 &  ul{
 transform-style: preserve-3d;
@@ -126,6 +136,7 @@ border-top: 2px solid map-get($colors,'ocean-4');
 & > li:first-child{
 position: relative;
 width:100%;
+border-top:transparent;
 & > span.copy-message{
 position: absolute;
 top:-50%;
@@ -155,8 +166,8 @@ margin-inline:auto ;
 font:1.4rem/2 'Poppins',serif;
 padding: 0 0rem;
 outline:none;
-border:1px solid red;
-background-color: transparent;
+border:0;
+background-color:transparent;
 }
 & > button.clipboard-btn {
 margin-left: auto;
@@ -220,6 +231,7 @@ background: linear-gradient(map.get($colors,'cyan'),lighten(map.get($colors,'cya
 box-shadow:
 inset -0.1rem -0.1rem 0.5rem 0.05rem rgba(0,0,0,0.8);
 animation: nose-animation 0.2s 3s 10 alternate-reverse ease-in-out ;
+transform:translate(-15px,-2px)  ;
 &:hover{
 background: linear-gradient(map.get($colors,'cyan'),darken(map.get($colors,'cyan'),9%));
 }
@@ -230,14 +242,10 @@ inset -0.1rem -0.1rem 0rem 0rem rgba(0,0,0,0.5);
 }
 @keyframes nose-animation {
 0%{
-transform:rotateZ(20deg);
+transform:translate(-15px,-2px) rotateZ(20deg);
 }
-// 50%{
-//   transform:rotateZ(-20deg);
-  
-// }
 100%{
-  transform:rotateZ(-20deg);
+  transform:translate(-15px,-2px) rotateZ(-20deg);
 }
 }
 }
@@ -283,13 +291,6 @@ animation: smile-shape 2s 1s forwards ;
 // border: 2px solid red;
 width:100%;
 height:100%;
-// border-bottom-left-radius: 50%;
-// border-bottom-right-radius: 50%;
-// box-shadow: inset 1rem 1rem 5rem hotpink,
-//  inset -1rem -1rem 5rem hotpink,
-//  0rem 1rem 1rem rgba(0,0,0,0.5) 
-//  ;
-// background:linear-gradient(#fff,blue);
 & text{
 font-size:28px;
 text-anchor:middle;
@@ -307,9 +308,8 @@ font-size: 40px;
  d:path("M 10 40 Q 160 150 300 40")
 }
 100%{
-  font-size:28px;
-  d:path("M 10 40 Q 160 40 300 40")
-
+font-size:28px;
+d:path("M 10 40 Q 160 40 300 40")
 }
 }
 }

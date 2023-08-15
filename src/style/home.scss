@@ -8,48 +8,78 @@
   grid-template-rows:1fr 1fr 1fr;
   place-items: center;
   overflow-x: hidden;
-
-animation: sunrise 10s 1s linear forwards;
+&:not(.cancel-animation){
+  animation: sunrise 10s 1s linear forwards;
+}
  @keyframes sunrise {
 @for $i from 0 through 100{
 @if $i <58 {
   #{$i * 1%} {
-  background:no-repeat radial-gradient(circle 200px at ((20 + $i)/1.2)*1% (100- $i) * 1%,map.get($colors,'sun-1'),hsla(209, 58%, 24 +$i *1%,1 - $i/100)),
+  background:no-repeat radial-gradient(circle 200px at ((20 + $i)/1.2)*1% (100- $i) * 1%,map.get($colors,'sun-1'),hsla(209, 58%, 24 +$i *1%,1 - $i / 100)),
    linear-gradient(map.get($colors,'ocean-3'),map.get($colors,'ocean-0'))
   ;
   }
 }@else{
    #{$i * 1%} {
-  background:no-repeat radial-gradient(circle 200px at (78 / 1.2)*1% (100- $i) * 1%,map.get($colors,'sun-1'),hsla(209, 58%, 82,1 - $i/100)),
+  background:no-repeat radial-gradient(circle 200px at (78 / 1.2)*1% (100- $i) * 1%,map.get($colors,'sun-1'),hsla(209, 58%, 82,1 - $i / 100)),
    linear-gradient(map.get($colors,'ocean-3'),map.get($colors,'ocean-0'))
   ;
   } 
 }
 }
 }
+//cnacel header's animation when we return back from showApp or smallApp
+&.cancel-animation header{
+opacity:1;
+animation:headerAnimation 0s ease-in forwards;
+} 
 & > header{
+&:is(.move-header-up){
+opacity:0;
+transition-delay: 1s;
+}
+@media screen and (max-width:775px) {
+& h1{
+font-size:calc($fs-500 * 1 );
+} 
+}
+@media screen and (max-width:520px) {
+& h1{
+font-size:$fs-400 ;
+} 
+& h2{
+font-size:$fs-300 ;
+}
+}
 position: relative;
 font-family:Poppins,serif;
 margin-inline: auto;
 width:min(100%,60rem);
 padding: 1rem;
 z-index:2;
+transition: all 0.5s 3s linear;
 transform:translateY(-200px);
 animation:headerAnimation 2s ease-in 7s forwards;
 border-bottom-left-radius:10px;
 border-bottom-right-radius:10px;
 overflow: hidden;
 &:after{
+@media (max-width:775px ){
+background: radial-gradient(ellipse 50% 5px at 50% 40%,map.get($colors,'yellow-shine')100%,map.get($colors,'ocean-0'));
+}
+@media (max-width:520px ){
+background: radial-gradient(ellipse 50% 5px at 50%,map.get($colors,'yellow-shine')0%,map.get($colors,'ocean-0'));
+}
 position: absolute;
 inset:0;
 width:100%;
 height:100%;
 content:"";
 border-radius:inherit;
-opacity:0.5;
+opacity:0.3;
 background: radial-gradient(ellipse 50% 10px at 50%,map.get($colors,'yellow-shine')60%,map.get($colors,'ocean-0'));
 z-index:-1;
- filter: blur(0px);
+ filter: blur(5px);
 }
 & > h1,h2{
 width: 100%;
@@ -73,14 +103,17 @@ left:30%;
 width:5%;
 z-index:1;
 offset-path: path("M 59 3 Q 132 -43 213 -1 Q 284 20 360 -12 T 510 -5");
-// animation: silingBoat 30s infinite alternate  ease-in-out;
+ animation: silingBoat 30s infinite alternate  ease-in-out;
 & > span{
+@media (max-width:520px){
+font-size:$fs-200;
+}
 position: absolute;
-width:200%;
+width:300%;
 height:150%;
 top:-100%;
 left:100%;
-font:bold 1.2rem/1.5 "Poppins",serif;
+font:bold $fs-300 / 1.5 "Poppins",serif;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -91,7 +124,7 @@ border-bottom-left-radius:5%;
 }
 &::after{
   position: absolute;
-  width:200%;
+  width:300%;
   height:150%;
   top:-100%;
   left:100%;
@@ -102,11 +135,11 @@ content:"";
  box-shadow:0.2rem 0.2rem  0.6rem $greyLight-2,
  -.2rem -.2rem .5rem $greyLight-1;
  ;
-// animation: shadowAnimation 6s infinite 2s linear;
+animation: shadowAnimation 6s infinite 2s linear;
 }
 &:before{
   position: absolute;
-  width:200%;
+  width:300%;
   height:150%;
   top:-100%;
   left:100%;
@@ -117,19 +150,18 @@ content:"";
 box-shadow:0.2rem 0.2rem 0.6rem $greyLight-2,
 -.2rem -.2rem .5rem $greyLight-1;
 ;
-// animation: shadowAnimation 8s infinite  linear;
+animation: shadowAnimation 8s infinite  linear;
 }
 }
 & > svg{
 position: absolute;
 top:0;
 left:0;
-//  border:10px solid green;
-// @for $i from 1 through 3{
-//  & path:nth-child(#{$i}){
-//   animation: path-top-#{$i} 3s linear infinite alternate-reverse;
-//  }
-// }
+@for $i from 1 through 3{
+ & path:nth-child(#{$i}){
+  animation: path-top-#{$i} 3s linear infinite alternate-reverse;
+ }
+}
 }
 }
 }

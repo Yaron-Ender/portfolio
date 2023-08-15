@@ -1,0 +1,16 @@
+ANIMATION MECHANISIM
+
+*home page animation*
+-the body has a night style background 
+-when the home comp. mount home's animation start--> two more animations depend on home animation: 1. the header --> animation start after 7s . 2.navbar comp. --> start when home animation finished
+
+**using context*
+when we change the router from "/showApp" or "/smallApp" to "/" the home comp. make rerender and the home animation start over.
+in order to combat that we use context in the MainNav componenet
+
+
+*medaiquries*
+-MainNav -
+*plate's size at max-width 775
+*change the maionNav lat out at max width of 622
+*

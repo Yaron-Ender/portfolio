@@ -11,8 +11,12 @@ const animationPannelListplane = useRef();
 const inputElement = useRef();
 const {contact}=useContext(ContactContext);
 const [openTextPannel,setOpenTextPannel]=useState(false);
+const [screenSize,setScreenSize]=useState('');
 //THE FUNCIONALITY OF THE CHANGE FROM COPY TO COPIED IS MADE IN THE CSS WITH SCSS FUNCTION
   useEffect(()=>{
+//check screen size 
+setScreenSize(window.innerWidth)
+console.log(screenSize)
 if(contact){
 animationPannel.current.style.setProperty("display", "grid");
 //stop the "fan" when the UL animation end
@@ -29,12 +33,12 @@ animationPannelListplane.current.getAnimations()[0].finished.then(() => {
 });
 }
 }
-},[contact])
+},[contact,screenSize])
 
 return (
 <div className={`${contact ? "open-contact-pannel" : ""} section-contact`}>
 <div className="section-contact__animation-pannel"
-style={{display:"none"}}
+style={(screenSize<775)?{'--screen':true,display:'none'}:{background:'green',display:'none'}}
 ref={animationPannel}
 >
 <div className="section-contact__animation-pannel__dropdwon-list"

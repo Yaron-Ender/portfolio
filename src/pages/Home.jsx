@@ -1,22 +1,42 @@
 import Footer from '../componenet/Footer';
-import { useEffect,useState } from 'react';
+import { useEffect,useState,useRef, useContext } from 'react';
 import MainNav from '../componenet/MainNav';
 import Contact from '../componenet/Contact';
+import { ContactContext } from '../context/ContactContext';
 const Home = () => {
-const [viewboxWidth,setViewboxWidth]=useState('');
-const [openConatct,setOpenContact] = useState(false)
+const { contact, stopHomeAnimation } =
+  useContext(ContactContext);
+const [insertNavbar,setInsertNavbar] = useState(false);
+const [cancelHomeAnimation,setCancelHomeAnimation]=useState(false);
+const home = useRef();
 useEffect(()=>{
-setViewboxWidth(window.innerWidth)
-},[setViewboxWidth])
-    return (
-    <div className='home'>
-    <header>
-        <h1>Welcome to my portfolio</h1> 
- <h2>Hai, my name is Yaron Ender i'm Junior web developer. i use Javascript,React,Css(Scss),git and Firebase</h2>
+if(!stopHomeAnimation){
+home.current.getAnimations()[0].finished.then(()=>{
+setInsertNavbar(true)
+})
+}
+//it become true when user click the apps or smallApps btn in the mainNavbqar component
+if(stopHomeAnimation){
+  setCancelHomeAnimation(true);
+  home.current.style.setProperty(
+    "background",
+    `no-repeat radial-gradient(circle 200px at 65% 1%,hsl(50,95%,85%),hsla(209,58%,82.1%,0)),linear-gradient(hsl(209, 57%, 64%),hsl(207, 52%, 96%))`
+  );
+}
+},[setInsertNavbar,stopHomeAnimation])
+
+return (
+    <div className={`${cancelHomeAnimation?'cancel-animation':''} home`}
+    ref={home}
+     >
+    <header className={`${contact?'move-header-up':''}`} >
+<h1>Welcome to my portfolio</h1> 
+ <h2>Hai, my name is Yaron Ender i'm a freelancer Junior web developer. i use Javascript,React,Css(Scss),git and Firebase</h2>
     </header>
         <main>
-        <h1>main section - {viewboxWidth}</h1>
-        <MainNav />
+        <MainNav insertNavbar={insertNavbar}
+                cancelHomeAnimation={cancelHomeAnimation}
+        />
         <Contact  />
         </main>
         <Footer />

@@ -1,14 +1,58 @@
 .main-navbar{
+&:not(.cancel-home-animation){
+transform: translateX(-150%) rotateX(70deg);
+}
+@media (max-width: 620px) {
+display:grid;
+grid-template-columns:1fr 1fr 1fr;
+grid-template-rows:1fr 1fr;
+
+}
 width:min(100%,60rem);
 margin-inline:auto ;
 padding:0 3rem;
 display: flex;
 justify-content:space-between;
-background: #{hsl($hue, 10%,90%)};
-box-shadow: 0 0 0 3rem #{hsl($hue, 10%,90%)};
 border-radius:2%;
-border: 2px solid green;
+transition:all 5s linear;
+&.insert-navbar{
+transform: translateX(0%) rotateX(0deg);
+}
+&.cancel-home-animation{
+transition:all 0s linear;
+transform: translateX(0%) rotateX(0deg);
+}
 &__plate{
+@media (max-width: 775px) {
+width:8rem;
+}
+@media (max-width:620px) {
+width:7rem;
+&:nth-child(1){
+position: relative;
+top:40px;
+right:-65px
+}
+&:nth-child(2){
+grid-area:2 / 2 / 3 / 3;
+}
+&:nth-child(3){
+grid-area:1 / 3 / 2 / 4;
+position: relative;
+top:40px;
+left:-65px
+}
+}
+@media (max-width:520px){
+&:nth-child(1){
+top:30px;
+right:-45px
+}
+&:nth-child(3){
+top:30px;
+left:-45px
+}
+}
  width:10rem;
  aspect-ratio:1;
  border-radius:15%;
@@ -19,13 +63,12 @@ place-items:center;
  #{hsl($hue, 10%, 45%)},
  #{hsl($hue, 10%, 65%)}
   );
-   transform: rotateX(45deg) rotateZ(43deg);
-  box-shadow:.15em 0.15em 0  #{hsl($hue, 10%,75%)},
+transform: rotateX(45deg) rotateZ(43deg);
+box-shadow:.15em 0.15em 0  #{hsl($hue, 10%,75%)},
 0.45em 0.45em 0 #{hsl($hue, 30%,55%)},
 1em 1em 0  #{hsl($hue, 30%,45%)},
 1.2em 1.2em 0 #{hsl($hue, 20%,30%)},
 1.6em 1.6em 0.6em 0em #{hsl($hue, 20%,30%)},
-// 1.6em 1.6em 0em 3.2em #{hsl($hue, 10%,90%)}
 ;
 //CLICK STYLE
 & > div.clicked{
@@ -72,9 +115,12 @@ transition: box-shadow 0.15s linear;
 }
 }
 }
-& > .square-shape > span.span-background{
+& > .app > span.span-background{
 border-radius:15%;
 background: linear-gradient(90deg,map-get($colors,'cyan'),lighten(map-get($colors,'cyan'),15%));
+&:hover{
+background: linear-gradient(90deg,map-get($colors,'cyan'),lighten(map-get($colors,'cyan'),5%));
+}
 &:after{
 background: linear-gradient(90deg,map-get($colors,'cyan'),darken(map-get($colors,'cyan'),15%));
 box-shadow: 0.25em 0.25em 0.0em hsla(0,0%,0%,0.4),
@@ -84,6 +130,9 @@ box-shadow: 0.25em 0.25em 0.0em hsla(0,0%,0%,0.4),
 & > .circle-shape > span.span-background{
 border-radius: 50%;
 background: linear-gradient(90deg,map-get($colors,'magenta'),lighten(map-get($colors,'magenta'),15%));
+&:hover{
+background: linear-gradient(90deg,map-get($colors,'magenta'),lighten(map-get($colors,'magenta'),5%));
+}
 &:after{
 background: linear-gradient(90deg,map-get($colors,'magenta'),darken(map-get($colors,'magenta'),15%));
 box-shadow: 0.25em 0.25em 0.0em hsla(0,0%,0%,0.4),
@@ -93,6 +142,9 @@ box-shadow: 0.25em 0.25em 0.0em hsla(0,0%,0%,0.4),
 & > .small-apps-shape > span.span-background{
 border-radius:15%;
 background: linear-gradient(90deg,map-get($colors,'pink'),lighten(map-get($colors,'pink'),15%));
+&:hover{
+background: linear-gradient(90deg,map-get($colors,'pink'),lighten(map-get($colors,'pink'),5%));
+}
 &:after{
 background: linear-gradient(90deg,map-get($colors,'pink'),darken(map-get($colors,'pink'),15%));
 box-shadow: 0.25em 0.25em 0.0em hsla(0,0%,0%,0.4),
