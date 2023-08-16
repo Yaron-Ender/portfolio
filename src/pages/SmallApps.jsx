@@ -1,6 +1,8 @@
 import { useRef,useEffect } from "react";
-import { ChevronDoubleLeftIcon,ChevronDoubleRightIcon } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
+import { ChevronDoubleLeftIcon,ChevronDoubleRightIcon,ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
 const SmallApps = () => {
+const navigate = useNavigate();
   const carusel = useRef()
   let angel =0
   let rounds=0
@@ -16,17 +18,33 @@ arr.forEach((card,index)=>{
 card.classList.remove("active-card");
 })
 //apply style for the central card
- arr[(Math.abs(rounds % 6))].style.setProperty(
-   "transform",
-   `rotateY(${(Math.abs(rounds % 6))*60}deg) translateZ(20rem) scale(1.1)`
- );
- arr[Math.abs(rounds % 6)].classList.add('active-card')
+if(rounds>0){
+  arr[Math.abs(((rounds % 6)===0?0:(rounds % 6)-6))].style.setProperty(
+    "transform",
+    `rotateY(${Math.abs(((rounds % 6)===0?0:(rounds % 6)-6)) * 60}deg) translateZ(20rem) scale(1.1)`
+  );
+  arr[Math.abs(((rounds % 6)===0?0:(rounds % 6)-6))].classList.add("active-card"); 
+}
+if(rounds<=0){
+  arr[(Math.abs(rounds % 6))].style.setProperty(
+    "transform",
+    `rotateY(${(Math.abs(rounds % 6))*60}deg) translateZ(20rem) scale(1.1)`
+  );
+  arr[(Math.abs(rounds % 6))].classList.add('active-card')
+}
   }
-    return (
-  <div className='small-apps'>
-    <h1>snmall appl</h1>
+return (
+<div className='small-apps-component'
+style={{'--margin':window.innerWidth+'px'}}>
+ <header>
+<h1 >Small APPs</h1>
+<button className='btn btn-black' onClick={()=>{
+navigate('/')
+}}
+>Go back to home page <ArrowUturnLeftIcon width={20} /></button>
+</header>
 <div className="carusel-container-prespective">
-  <ChevronDoubleLeftIcon width={150} className="chevron-left"
+  <ChevronDoubleLeftIcon className="chevron-left"
   onClick={(e)=>{
     angel -=60
     rounds --
@@ -34,7 +52,7 @@ card.classList.remove("active-card");
   handleCarusel(e)
   }}
   />
-<ChevronDoubleRightIcon width={150}  className="chevron-right"
+<ChevronDoubleRightIcon   className="chevron-right"
   onClick={(e)=>{
  angel += 60;
  rounds ++
@@ -67,7 +85,7 @@ ref={carusel}
 <span>work only on Desktop</span>
 <button>
 <span className="shadow"></span>
-<a className="btn" href="https://wordlweather-app.netlify.app/"target='_blank'> View Project</a>
+<a className="btn" href="https://fun-word-game.netlify.app"target='_blank'> View Project</a>
 </button>
 </div>
 </div>
@@ -81,7 +99,7 @@ ref={carusel}
 <span>work only on Desktop</span>
 <button>
 <span className="shadow"></span>
-<a className="btn" href="https://wordlweather-app.netlify.app/"target='_blank'> View Project</a>
+<a className="btn" href="https://hang-man-world-game.netlify.app"target='_blank'> View Project</a>
 </button>
 </div>
 </div>
@@ -93,7 +111,7 @@ ref={carusel}
 <p>HPLC devices management App allows to the team leader to organize and manage the HPLC devices in the laboratory </p>
 <button>
 <span className="shadow"></span>
-<a className="btn" href="https://hang-man-world-game.netlify.app/"target='_blank'> View Project</a>
+<a className="btn" href="https://hplc-devices-managment.netlify.app"target='_blank'> View Project</a>
 </button>
 </div>
 </div>

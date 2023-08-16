@@ -17,7 +17,6 @@ const [screenSize,setScreenSize]=useState('');
   useEffect(()=>{
 //check screen size 
 setScreenSize(window.innerWidth)
-console.log(screenSize)
 if(contact){
 animationPannel.current.style.setProperty("display", "grid");
 if(screenSize<775){

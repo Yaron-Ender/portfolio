@@ -4,7 +4,6 @@ min-height:100vh;
 display: grid;
 grid-template-columns:1fr;
 place-items:center;
- background: hsl(210deg 15% 6%);
 background:radial-gradient(hsla(36, 100%, 54%,0.5), hsl(210deg 15% 6%));
 & > header{
 display:flex;

@@ -109,13 +109,12 @@ inset: 0;
 width:100%;
 height: 100%;
 transform: translate3d(0.3em,0.3em,-1px);
-transition: box-shadow 0.15s linear;
 border-radius: inherit;
 transition: box-shadow 0.15s linear;
 }
 }
 }
-& > .app > span.span-background{
+& > .square-shape > span.span-background{
 border-radius:15%;
 background: linear-gradient(90deg,map-get($colors,'cyan'),lighten(map-get($colors,'cyan'),15%));
 &:hover{
@@ -146,7 +145,7 @@ background: linear-gradient(90deg,map-get($colors,'pink'),lighten(map-get($color
 background: linear-gradient(90deg,map-get($colors,'pink'),lighten(map-get($colors,'pink'),5%));
 }
 &:after{
-background: linear-gradient(90deg,map-get($colors,'pink'),darken(map-get($colors,'pink'),15%));
+background: linear-gradient(90deg,map-get($colors,'pink'),darken(map-get($colors,'pink'),5%));
 box-shadow: 0.25em 0.25em 0.0em hsla(0,0%,0%,0.4),
         0.5em 0.5em 0.5em fade-out(map-get($colors,'pink'),0.1);
 }

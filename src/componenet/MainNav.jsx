@@ -41,6 +41,7 @@ const MainNav = ({ insertNavbar, cancelHomeAnimation }) => {
         case "small-Apps":
           prev = { ...prev, ["small-Apps"]: !prev["small-Apps"] };
           window.setTimeout(() => {
+             updateStopHomeAnimation(true);
             navigate("/smallApps");
           }, 1000);
           return prev;
@@ -64,33 +65,33 @@ const MainNav = ({ insertNavbar, cancelHomeAnimation }) => {
     </span>
   </div>
       </div>
-      {/* contact */}
-      <div className="main-navbar__plate">
-        <div
-          className={`${
-            clickObj["contact"] ? "clicked" : ""
-          } circle-shape contact`}
-          onClick={handleClick}
-        >
-          <span className="span-background">
-            {!contact && <p data-action="contact">Contact</p>}
-            {contact && <p data-action="contact">Close Contact</p>}
-          </span>
-        </div>
-      </div>
-      {/* small apps */}
-      <div className="main-navbar__plate">
-        <div
-          className={`${
-            clickObj["small-Apps"] ? "clicked" : ""
-          } small-apps-shape small-apps`}
-          onClick={handleClick}
-        >
-          <span className="span-background">
-            <p data-action="small-Apps">Small Apps</p>
-          </span>
-        </div>
-      </div>
+  {/* contact */}
+  <div className="main-navbar__plate">
+    <div
+      className={`${
+        clickObj["contact"] ? "clicked" : ""
+      } circle-shape contact`}
+      onClick={handleClick}
+  >
+    <span className="span-background">
+      {!contact && <p data-action="contact">Contact</p>}
+      {contact && <p data-action="contact">Close Contact</p>}
+    </span>
+    </div>
+  </div>
+  {/* small apps */}
+  <div className="main-navbar__plate">
+    <div
+    className={`${
+      clickObj["small-Apps"] ? "clicked" : ""
+    } small-apps-shape small-apps`}
+    onClick={handleClick}
+  >
+    <span className="span-background">
+      <p data-action="small-Apps">Small Apps</p>
+    </span>
+    </div>
+  </div>
     </div>
   );
 };
