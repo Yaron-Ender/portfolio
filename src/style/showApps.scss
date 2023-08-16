@@ -4,21 +4,22 @@ min-height:100vh;
 display: grid;
 grid-template-columns:1fr;
 place-items:center;
-background-color: #444;
+ background: hsl(210deg 15% 6%);
+background:radial-gradient(hsla(36, 100%, 54%,0.5), hsl(210deg 15% 6%));
 & > header{
 display:flex;
-justify-content:flex-end;
+justify-content:center;
 align-items: center;
-
 width:100%;
 & h1{
-margin-inline:auto;
+margin-left:calc(var(--margin) / 2);
+transform: translateX(-50%);
 color: #eee;
 font-family: 'Poppins' serif;
 letter-spacing: 0.2rem;
 }
 & > button{
-margin-right:1rem;
+  margin-left:auto;
   padding: 0.4em 1.4em;
   border-radius:3%;
   font:$fs-200/1.5 'Poppins';
@@ -30,21 +31,39 @@ box-shadow: 0 0 0 0.3rem #444,
             0 0 0 0.6em #fff;
 }
 }
+@media (max-width:600px){
+margin-inline: auto;
+gap:1rem;
+  & >h1,button{
+margin: 0;
+transform: translateX(0%);
+  }
+}
 }
 &__container{
 max-width:940px;
 width:100%;
+height:100%;
 display: grid;
 grid-template-columns:1fr;
 place-items:center;
 padding:2rem;
 gap:2rem;
 &-project{
-width: 100%;
+width:95%;
 aspect-ratio:3;
 position: relative;
 cursor: pointer;
  overflow:hidden;
+ @media (max-width:700px){
+aspect-ratio:2;
+}
+@media (max-width:600px){
+aspect-ratio:2;
+}
+@media (max-width:500px){
+aspect-ratio:1.8;
+}
 &:hover .content{
 background-color: #222;
 opacity: 1;
@@ -58,12 +77,11 @@ opacity: 0;
 }
 & >.content{
 position:absolute;
-padding:2rem 2rem 0.2rem 2rem;
  width:100%;
  height:100%;
 z-index: 6;
 display:flex;
-flex-flow:column wrap;
+flex-flow:column;
 align-items:center;
 justify-content: space-between;
 color:#fff;
@@ -72,10 +90,10 @@ transition: all 6s 0.1s cubic-bezier(0.5, 0.45, 0.45, 0.95);
 & >p{
 transform:scale(0.9);
 transition:inherit;
+padding:2rem 2rem 0.2rem 2rem;
 }
 & > .action-box{
-margin-inline-start:auto ;
-max-width: 40%;
+ margin-inline-start:auto ;
 padding:0.2rem;
 display:flex;
 justify-content:flex-end;
@@ -85,11 +103,11 @@ text-decoration:none;
 display:inline-block;
 position: relative;
 color:#222;
-padding:2.5px 22px;
+padding:22.5px 22px;
 border-radius:7px;
 background:hsl(0, 0%, 100%);
 transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
-font-size:1.7rem;
+font-size:$fs-400;
 &:hover{
   transition: all 0.3s;
   box-shadow: 0 0 0 0.2rem #444,
@@ -111,7 +129,13 @@ transform: scale(1.55);
 }
 }
 }
+@media (max-width:600px){
+justify-content: center;
+& p{
+padding-top: 0;
 }
+}
+}//end of content
 & > .background{  
 position: absolute;
 width:100%;

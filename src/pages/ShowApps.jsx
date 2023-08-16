@@ -1,17 +1,17 @@
 import github from '../assets/github.png'
-import { useState,useEffect,useContext } from 'react';
+import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/solid";
 const ShowApps = () => {
 const [smallScreen,setSmallScreen]=useState(false)
 const navigate = useNavigate();
 useEffect(()=>{
-  if(window.innerWidth<580){
+if(window.innerWidth<580){
 setSmallScreen(true)
-  }
+}
 },[])
     return (
-      <div className="showApps">
+<div className="showApps" style={{'--margin':window.innerWidth+'px'}}>
 <header>
 <h1> APPs</h1>
 <button className='btn btn-black' onClick={()=>{
@@ -20,7 +20,8 @@ navigate('/')
 >Go back to home page <ArrowUturnLeftIcon width={20} /></button>
 </header>
 <div className="showApps__container">
-<div className="showApps__container-project showApps__container-project-one">
+<div className="showApps__container-project 
+   showApps__container-project-one">
 <div className="content">
 <h3>Market APP </h3>
 <p>
@@ -30,12 +31,12 @@ MARKET APP connect between sellers who want to offer their goods and customers w
 <div className="action-box">
   <a className='social-icon' href="https://github.com/Yaron-Ender/market-api" target="_blank"><img src={github}  alt='Github'/>
   </a>
-<a href="https://ender-market.netlify.app/" className="btn"> View Project</a>
+<a target='_blank' href="https://ender-market.netlify.app/" className="btn"> View Project</a>
 </div>
     </div>
 <div className="background">
 </div>
-    </div>
+</div>
 <div className="showApps__container-project showApps__container-project-two">
 <div className="content">
 <h3>Labarotory Tasks Managment </h3>
@@ -55,7 +56,10 @@ to the employees based on the created database{" "}
 <div className="action-box">
   <a className='social-icon' href="https://github.com/Yaron-Ender/market-api" target="_blank"><img src={github}  alt='Github'/>
   </a>
+{/* show the btn just if the screenSmall is false */}
+{!smallScreen&&
 <a href="https://ender-market.netlify.app/" className="btn"> View Project</a>
+}
 </div>
 </div>
 <div className="background">
