@@ -12,23 +12,25 @@ const navigate = useNavigate();
   },[])
   //remove the style from all the card
   const handleCarusel = (e)=>{
+  //determine the translateZ acording to screen width
+  const z = (window.innerWidth>892)?window.innerWidth/4.8:250
   const arr = Array.from(carusel.current.children);
 arr.forEach((card,index)=>{
-  card.style.setProperty("transform",`rotateY(${60*index}deg) translateZ(20rem) scale(1)`);
+  card.style.setProperty("transform",`rotateY(${60*index}deg) translateZ(${z}px) scale(1)`);
 card.classList.remove("active-card");
 })
 //apply style for the central card
 if(rounds>0){
   arr[Math.abs(((rounds % 6)===0?0:(rounds % 6)-6))].style.setProperty(
     "transform",
-    `rotateY(${Math.abs(((rounds % 6)===0?0:(rounds % 6)-6)) * 60}deg) translateZ(20rem) scale(1.1)`
+    `rotateY(${Math.abs(((rounds % 6)===0?0:(rounds % 6)-6)) * 60}deg) translateZ(${z}px) scale(1.1)`
   );
   arr[Math.abs(((rounds % 6)===0?0:(rounds % 6)-6))].classList.add("active-card"); 
 }
 if(rounds<=0){
   arr[(Math.abs(rounds % 6))].style.setProperty(
     "transform",
-    `rotateY(${(Math.abs(rounds % 6))*60}deg) translateZ(20rem) scale(1.1)`
+    `rotateY(${(Math.abs(rounds % 6))*60}deg) translateZ(${z}px) scale(1.1)`
   );
   arr[(Math.abs(rounds % 6))].classList.add('active-card')
 }
