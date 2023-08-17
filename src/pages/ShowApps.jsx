@@ -58,7 +58,7 @@ to the employees based on the created database{" "}
   </a>
 {/* show the btn just if the screenSmall is false */}
 {!smallScreen&&
-<a href="https://ender-market.netlify.app/" className="btn"> View Project</a>
+<a href="https://lab-managment-demo.netlify.app" className="btn"> View Project</a>
 }
 </div>
 </div>
