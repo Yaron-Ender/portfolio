@@ -43,7 +43,7 @@ height:60px;
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding:0 3rem;
+padding:0 0.1rem 0 0.3rem;
  background: linear-gradient(
 90deg,
  #{darken(hsl($hue, 50%, 45%),0%)},

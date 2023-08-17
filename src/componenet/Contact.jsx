@@ -56,9 +56,9 @@ ref={dropdwonList}
 <ul className="char-list"
 ref={animationPannelListUl}
 >
- <li>first <CheckIcon className="check-icon" width={35}/></li>
- <li>seconde <CheckIcon className="check-icon" width={35}/></li>
- <li>third <CheckIcon className="check-icon" width={35}/></li>
+ <li>Reliability <CheckIcon className="check-icon" width={35}/></li>
+ <li>Enthusiasm <CheckIcon className="check-icon" width={35}/></li>
+ <li>Communication <CheckIcon className="check-icon" width={35}/></li>
 </ul>
 <div className="dropdwon-plane"
 ref={animationPannelListplane}
