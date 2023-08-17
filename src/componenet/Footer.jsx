@@ -7,7 +7,7 @@ const {contact}=useContext(ContactContext)
     <footer>
 {!contact&&
 <div className="siling-boat-img">
-  <span>who need a project ?</span>
+  <span>who needs a project ?</span>
   <img src={silingBoat} alt="siling boat"/>
 </div>
 }
