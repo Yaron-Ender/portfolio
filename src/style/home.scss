@@ -7,7 +7,7 @@
   grid-template-columns:1fr;
   grid-template-rows:1fr 1fr 1fr;
   place-items: center;
-  overflow-x: hidden;
+  overflow: hidden;
 &:not(.cancel-animation){
   animation: sunrise 10s 1s linear forwards;
 }
@@ -15,13 +15,13 @@
 @for $i from 0 through 100{
 @if $i <58 {
   #{$i * 1%} {
-  background:no-repeat radial-gradient(circle 200px at ((20 + $i)/1.2)*1% (100- $i) * 1%,map.get($colors,'sun-1'),hsla(209, 58%, 24 +$i *1%,1 - $i / 100)),
+  background:no-repeat radial-gradient(circle 200px at calc((20 + $i)/1.2)*1% (100- $i) * 1%,map.get($colors,'sun-1'),hsla(209, 58%, calc(24 + $i) *1%,calc(1 - $i/100))),
    linear-gradient(map.get($colors,'ocean-3'),map.get($colors,'ocean-0'))
   ;
   }
 }@else{
    #{$i * 1%} {
-  background:no-repeat radial-gradient(circle 200px at (78 / 1.2)*1% (100- $i) * 1%,map.get($colors,'sun-1'),hsla(209, 58%, 82,1 - $i / 100)),
+  background:no-repeat radial-gradient(circle 200px at calc(78 / 1.2)*1% (100- $i) * 1%,map.get($colors,'sun-1'),hsla(209, 58%, 82%, calc(1 - $i/100) )),
    linear-gradient(map.get($colors,'ocean-3'),map.get($colors,'ocean-0'))
   ;
   } 
