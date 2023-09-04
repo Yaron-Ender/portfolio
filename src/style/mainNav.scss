@@ -1,16 +1,16 @@
 .main-navbar{
 &:not(.cancel-home-animation){
 transform: translateX(-150%) rotateX(70deg);
+
 }
 @media (max-width: 620px) {
 display:grid;
 grid-template-columns:1fr 1fr 1fr;
 grid-template-rows:1fr 1fr;
-
 }
 width:min(100%,60rem);
+// padding:0 3rem;
 margin-inline:auto ;
-padding:0 3rem;
 display: flex;
 justify-content:space-between;
 border-radius:2%;
@@ -51,6 +51,16 @@ right:-45px
 &:nth-child(3){
 top:30px;
 left:-45px
+}
+}
+@media (max-width:420px){
+&:nth-child(1){
+top:20px;
+right:-35px
+}
+&:nth-child(3){
+top:20px;
+left:-35px
 }
 }
  width:10rem;
