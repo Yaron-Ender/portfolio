@@ -112,14 +112,18 @@ margin-inline:auto;
 align-self: flex-end;
 position: relative;   
 width:100%;
-aspect-ratio: 5;
+aspect-ratio:5;
 & > .siling-boat-img{
 position: absolute;
 top:70%;
 left:30%;
 width:5%;
 z-index:1;
-offset-path: path("M 59 3 Q 132 -43 213 -1 Q 284 20 360 -12 T 510 -5");
+// offset-path: path("M 59 3 Q 132 -43 213 -1 Q 284 20 360 -12 T 510 -5");
+
+@media (max-width:400px) {
+offset-path: path(" M -50 15 Q 101 -21 205 13"); 
+}
  animation: silingBoat 30s infinite alternate  ease-in-out;
 & > span{
 @media (max-width:520px){
@@ -172,7 +176,7 @@ animation: shadowAnimation 8s infinite  linear;
 }
 & > svg{
 position: absolute;
-top:0;
+top:0px;
 left:0;
 @for $i from 1 through 3{
  & path:nth-child(#{$i}){
