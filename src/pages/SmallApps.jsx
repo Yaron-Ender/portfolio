@@ -10,7 +10,7 @@ const navigate = useNavigate();
   useEffect(()=>{
   const arr = Array.from(carusel.current.children);
   arr[0].classList.add('active-card')
- if(window.innerWidth<350){
+ if(window.innerWidth<390){
  setSmallScreen(true)
  }
   },[smallScreen])
