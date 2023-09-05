@@ -6,7 +6,7 @@ const ShowApps = () => {
 const [smallScreen,setSmallScreen]=useState(false)
 const navigate = useNavigate();
 useEffect(()=>{
-if(window.innerWidth<580){
+if(window.innerWidth<590){
 setSmallScreen(true)
 }
 },[])
@@ -24,10 +24,17 @@ navigate('/')
    showApps__container-project-one">
 <div className="content">
 <h3>Market APP </h3>
+{!smallScreen&&
 <p>
 MARKET APP connect between sellers who want to offer their goods and customers who look for purchases opportunity.The App has few feather like Seller’s statistic, order tracking and more
  The APP is fully responsive
 </p>
+}
+{smallScreen&&
+<p>
+MARKET APP connect between sellers who want to offer their goods and customers who look for purchases opportunity
+</p>
+}
 <div className="action-box">
   <a className='social-icon' href="https://github.com/Yaron-Ender/market-api" target="_blank"><img src={github}  alt='Github'/>
   </a>

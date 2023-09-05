@@ -94,10 +94,12 @@ ref={carusel}
 <p>Find the hidden word in maximum six guesses</p>
 <p>inspired by Shaun Pelling </p>
 <span>work only on Desktop</span>
+{!smallScreen&&
 <button>
 <span className="shadow"></span>
 <a className="btn" href="https://fun-word-game.netlify.app"target='_blank'> View Project</a>
 </button>
+}
 </div>
 </div>
 {/* end of project two  */}
@@ -106,12 +108,14 @@ ref={carusel}
 <div className="content">
 <h4>Hang Mam Game</h4>
 <p>Find the hidden word in maximum six guesses</p>
-<p>inspired by Shaun Pelling </p>
+<p>inspired by Brad Traversy </p>
 <span>work only on Desktop</span>
+{!smallScreen&&
 <button>
 <span className="shadow"></span>
 <a className="btn" href="https://hang-man-world-game.netlify.app"target='_blank'> View Project</a>
 </button>
+}
 </div>
 </div>
 {/* end of project three */}
@@ -119,7 +123,12 @@ ref={carusel}
   <div className="carusel-project-card project-four">
 <div className="content">
 <h4>HPLC DEVICES</h4>
+{!smallScreen&&
 <p>HPLC devices management App allows to the team leader to organize and manage the HPLC devices in the laboratory </p>
+}
+{smallScreen&&
+<p>The App let the team leader to organize and manage the HPLC devices in the laboratory </p>
+}
 <button>
 <span className="shadow"></span>
 <a className="btn" href="https://hplc-devices-managment.netlify.app"target='_blank'> View Project</a>
@@ -131,8 +140,7 @@ ref={carusel}
   <div className="carusel-project-card project-five">
 <div className="content">
 <h4>Budget App</h4>
-<p>This App allow you to create budgets and expenses for every budget and manage them - this App made with React</p>
-<p>inspired by code in public Youtube channel </p>
+<p>React App that allow you to create budgets and their expenses and managae them</p>
 <button>
 <span className="shadow"></span>
 <a className="btn" href="https://yaronbudget.netlify.app"target='_blank'> View Project</a>
