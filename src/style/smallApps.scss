@@ -121,7 +121,7 @@ color:#fff;
 transition: all 3s .2s cubic-bezier(0.25, 0.45, 0.45, 0.95);
 opacity:0;
 //in small screen place the content in the center
-@media (max-width:350px) {
+@media (max-width:370px) {
  justify-content:center;
 }
 & > h4{
@@ -173,7 +173,7 @@ box-shadow:  0 0 10px 3px #fff,
     0 0 140px 9px #0ff;
 }
 //at very small screen bring down the button 
-@media (max-width:350px) {
+@media (max-width:370px) {
  margin-top:10px; 
 }
 }

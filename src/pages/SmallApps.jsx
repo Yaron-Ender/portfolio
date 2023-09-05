@@ -77,7 +77,7 @@ ref={carusel}
 <p>Weather App allow the user to find the current weather around the world. the information comes from AccuWeather API </p>
 }
 {smallScreen&&
-<p>Weather App allow the user to find the current weather around the the world. </p>
+<p>Weather App allow the user to find the current weather around the world. </p>
 }
 
 <button>
