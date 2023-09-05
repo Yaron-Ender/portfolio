@@ -107,8 +107,8 @@ cursor: pointer;
 opacity:1;
 }
 & > .content{
-position: absolute;
-z-index:1;
+  position: absolute;
+  z-index:1;
 width:100%;
 inset:0;
 display:flex;
@@ -120,7 +120,10 @@ border-radius:inherit;
 color:#fff;
 transition: all 3s .2s cubic-bezier(0.25, 0.45, 0.45, 0.95);
 opacity:0;
-
+//in small screen place the content in the center
+@media (max-width:350px) {
+ justify-content:center;
+}
 & > h4{
 text-align: center;
 letter-spacing:0.2em;
@@ -168,6 +171,10 @@ transform:translateY(0.1rem);
 box-shadow:  0 0 10px 3px #fff,
     0 0 100px 6px #f0f, 
     0 0 140px 9px #0ff;
+}
+//at very small screen bring down the button 
+@media (max-width:350px) {
+ margin-top:10px; 
 }
 }
 }//end of content

@@ -1,15 +1,19 @@
-import { useRef,useEffect } from "react";
+import { useRef,useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ChevronDoubleLeftIcon,ChevronDoubleRightIcon,ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
 const SmallApps = () => {
 const navigate = useNavigate();
   const carusel = useRef()
+  const [smallScreen,setSmallScreen]=useState(false)
   let angel =0
   let rounds=0
   useEffect(()=>{
   const arr = Array.from(carusel.current.children);
   arr[0].classList.add('active-card')
-  },[])
+ if(window.innerWidth<350){
+ setSmallScreen(true)
+ }
+  },[smallScreen])
   //remove the style from all the card
   const handleCarusel = (e)=>{
   //determine the translateZ acording to screen width
@@ -69,7 +73,12 @@ ref={carusel}
 <div className="carusel-project-card project-one">
 <div className="content">
 <h4>weather app</h4>
-<p>Weather App allow the user to find the current weather around the the world. the information comes from AccuWeather API </p>
+{!smallScreen&&
+<p>Weather App allow the user to find the current weather around the world. the information comes from AccuWeather API </p>
+}
+{smallScreen&&
+<p>Weather App allow the user to find the current weather around the the world. </p>
+}
 
 <button>
 <span className="shadow"></span>

@@ -119,7 +119,7 @@ top:70%;
 left:30%;
 width:5%;
 z-index:1;
-// offset-path: path("M 59 3 Q 132 -43 213 -1 Q 284 20 360 -12 T 510 -5");
+offset-path: path("M 59 3 Q 132 -43 213 -1 Q 284 20 360 -12 T 510 -5");
 
 @media (max-width:430px) {
 offset-path: path(" M -50 15 Q 101 -21 205 13"); 
