@@ -31,7 +31,7 @@ return (
      >
     <header className={`${contact?'move-header-up':''}`} >
 <h1>Welcome to my portfolio</h1> 
- <h2>Hi, my name is Yaron Ender I'm a freelancer Junior web developer. I use Javascript, React, Css(Scss), git and Firebase</h2>
+ <h2>Hi, my name is Yaron Ender I'm a Junior web developer. I use Javascript, React, React-Native Css(Scss), and Firebase</h2>
     </header>
         <main>
         <MainNav insertNavbar={insertNavbar}
